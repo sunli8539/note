@@ -1,3 +1,4 @@
+## java bean
 ```java
 StudentDetailVO  
    private Student baseInfo ;  
@@ -5,7 +6,7 @@ StudentDetailVO
    private List<Lesson> lessonList;  
 ```
 
-
+## mybatis配置
 ```xml
 <select id="detail" resultMap="StudentDetailMap">  
     <!--extends 可继承其他map对象, 没有则不写-->  
