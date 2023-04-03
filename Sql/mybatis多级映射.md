@@ -1,9 +1,12 @@
+```java
 StudentDetailVO  
-   Student baseInfo ;  
-   StudentRel  relInfo;  
-   List<Lesson>  lessonList;  
+   private Student baseInfo ;  
+   private StudentRel relInfo;  
+   private List<Lesson> lessonList;  
+```
 
 
+```xml
 <select id="detail" resultMap="StudentDetailMap">  
     <!--extends 可继承其他map对象, 没有则不写-->  
     <resultMap id="StudentDetailMap" type="com.smartai.student.vo.StudentDetailVO" extends="xxx">  
@@ -19,3 +22,5 @@ StudentDetailVO
 	select xxx  where student_id = #{studentId}  
     <select id="selectLessonsByStudentId" resultType="com.smartai.student.entity.Lesson">  
 	select xxx  where student_id = #{studentId}  
+```
+
