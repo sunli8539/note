@@ -1,5 +1,5 @@
 ## pgsql-note
-```postgresql
+```sql
 -- 更新json字段
 select param_json from student where param_json ->> 'no' = 'OFFE10099936';
 update student set param_json = (jsonb_set(param_json, '{no}', '"11"')) where id = 12040;
