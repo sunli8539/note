@@ -21,6 +21,6 @@ StudentDetailVO
     <select id="selectRelInfoByStudentId" resultType="com.smartai.studentrel.entity.StudentRel">  
 	select xxx  where student_id = #{studentId}  
     <select id="selectLessonsByStudentId" resultType="com.smartai.student.entity.Lesson">  
-	select xxx  where student_id = #{studentId}  
+	select xxx  where student_id = #{studentId} 
 ```
 
