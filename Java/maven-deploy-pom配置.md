@@ -1,5 +1,5 @@
-maven-deploy到私有仓库
-
+## maven-deploy到私有仓库
+```xml
 <distributionManagement>
         <repository>
             <id>xx</id>
@@ -37,3 +37,4 @@ maven-deploy到私有仓库
         </plugin>
     </plugins>
 </build>
+```
