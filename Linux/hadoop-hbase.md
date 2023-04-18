@@ -368,3 +368,61 @@ nohup /opt/app/hbase-2.4.12/bin/start-hbase.sh >> /opt/app/hbase-2.4.12/logs/hba
 http://xxx:16010/master-status
 
 
+## 问题排查及常用命令
+```text
+hbase hmaster故障分析及解决方案：Timedout 300000ms waiting for namespace table to be assigned
+原因：重启hadoop之前删除了/data/hadoop/hdfs目录，初始化的 /data/hadoop/hdfs/name 目录也被删除
+导致hbase无法创建namespace
+```
+
+### Hadoop
+```shell
+mkdir -p /clouddragonData/data/hadoop/tmp
+mkdir -p /clouddragonData/data/hadoop/hdfs/name (此目录缺失会导致hbase无法创建namespace)
+mkdir -p /clouddragonData/data/hadoop/hdfs/data
+mkdir -p /opt/app/hadoop-3.3.2/log  查看日志
+
+ps -ef | grep hadoop | grep -v grep | awk '{print $2}'| xargs -exec kill -9
+
+# 设置名称节点使用“hdfs namenode -format”命令如下
+cd /opt/app/hadoop-3.3.2/bin &&  ./hdfs namenode -format
+# 启动dfs
+nohup /opt/app/hadoop-3.3.2/sbin/start-dfs.sh  > /opt/app/hadoop-3.3.2/logs/start-dfs-log.log  2>&1 &
+# 启动yarn
+nohup /opt/app/hadoop-3.3.2/sbin/start-yarn.sh  > /opt/app/hadoop-3.3.2/logs/start-yarn-log.log  2>&1 &
+
+```
+
+### Hbase
+```shell
+mkdir -p  /clouddragonData/data/hbase/tmp/zookeeper
+mkdir -p  /opt/app/hbase-2.4.12/logs
+
+ps -ef | grep hbase | grep -v grep | awk '{print $2}'| xargs -exec kill -9
+
+nohup /opt/app/hbase-2.4.12/bin/start-hbase.sh >> /opt/app/hbase-2.4.12/logs/hbase-log.log 2>&1 &
+```
+
+### 数据目录变更
+```text
+hadoop
+core-site.xml
+hdfs-site.xml
+
+habse
+hbase-site.xml
+
+clouddragonData
+
+```
+```shell
+mkdir -p /clouddragonData/data/hadoop/tmp && mkdir -p /clouddragonData/data/hadoop/hdfs/name && mkdir -p /clouddragonData/data/hadoop/hdfs/data && mkdir -p  /clouddragonData/data/hbase/tmp/zookeeper
+
+mkdir -p /data/hadoop/tmp && mkdir -p /data/hadoop/hdfs/name && mkdir -p /data/hadoop/hdfs/data && mkdir -p  /data/hbase/tmp/zookeeper
+
+rm -rf /data/hadoop/  &&  rm -rf /data/hbase/
+
+```
+
+
+
