@@ -368,6 +368,9 @@ nohup /opt/app/hbase-2.4.12/bin/start-hbase.sh >> /opt/app/hbase-2.4.12/logs/hba
 http://xxx:16010/master-status
 
 
+
+
+
 ## 问题排查及常用命令
 ```text
 hbase hmaster故障分析及解决方案：Timedout 300000ms waiting for namespace table to be assigned
