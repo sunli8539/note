@@ -23,5 +23,15 @@ StudentDetailVO
 	select xxx  where student_id = #{studentId}  
     <select id="selectLessonsByStudentId" resultType="com.smartai.student.entity.Lesson">  
 	select xxx  where student_id = #{studentId} 
+	   
 ```
+```text
+如果报错  
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: Error instantiating class java.lang.Long with invalid types () or values (). Cause: java.lang.NoSuchMethodException: java.lang.Long.<init>()  
+
+删除相关sql的 parameterType
+```
+
+
+
 
