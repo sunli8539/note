@@ -39,7 +39,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.huawei.luban.job.dal.xbench.mapper", sqlSessionFactoryRef = "xbenchSqlSessionFactory")
+@MapperScan(basePackages = "com.xxx.mapper", sqlSessionFactoryRef = "xbenchSqlSessionFactory")
 public class XbenchDatabaseConfiguration {
 
     @Value("${spring.datasource.driverClassName}")
@@ -49,10 +49,10 @@ public class XbenchDatabaseConfiguration {
     private String url2;
 
     @Value("${spring.datasource.username}")
-    private String username;
+    private String username2;
 
     @Value("${spring.datasource.password}")
-    private String password;
+    private String password2;
 
     @Value("${spring.datasource.maxActive}")
     private int maxActive;
@@ -107,14 +107,14 @@ public class XbenchDatabaseConfiguration {
     @Bean(name = "xbenchDataSource")
     public DataSource getXbenchDataSource() {
         DruidDataSource datasource = new DruidDataSource();
-        datasource.setUrl(url2);
         initDataSource(datasource);
         return datasource;
     }
 
     private void initDataSource(DruidDataSource datasource) {
-        datasource.setUsername(username);
-        datasource.setPassword(password);
+        datasource.setUrl(url2);
+        datasource.setUsername(username2);
+        datasource.setPassword(password2);
         datasource.setDriverClassName(dirverName);
         // configuration
         datasource.setInitialSize(initialSize);
@@ -153,11 +153,10 @@ public class XbenchDatabaseConfiguration {
         sessionFactory.setFailFast(true);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
-            sessionFactory.setMapperLocations(resolver.getResources("com/huawei/luban/job/dal/xbench/mapper/*.xml"));
+            sessionFactory.setMapperLocations(resolver.getResources("com/xxx/mapper/*.xml"));
         } catch (IOException logException) {
             throw new LubanJobDatabaseException(logException.getMessage());
         }
-        // sessionFactory.setTypeAliasesPackage("com.huawei.luban.job.dal.model");
         SqlSessionFactory factory = null;
         try {
             factory = sessionFactory.getObject();
