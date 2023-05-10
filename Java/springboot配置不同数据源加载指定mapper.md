@@ -1,4 +1,4 @@
-```xml
+```properties
 spring.datasource.driverClassName=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://xxx:3306/cmdb_dev?allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
 spring.datasource.username=xx
