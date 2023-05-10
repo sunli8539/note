@@ -14,7 +14,7 @@ alter table xxx  AUTO_INCREMENT = 500;
 
 
 -- 截取第一个: 左边所有字符
-SUBSTRING_INDEX(templete, ':', 1)
+SUBSTRING_INDEX(str, ':', 1)
 -- 截取第一个: 右边所有字符
-SUBSTRING_INDEX(templete, ':', -1)
+SUBSTRING_INDEX(str, ':', -1)
 ```
