@@ -11,4 +11,10 @@ select count(1) from information_schema.columns where table_name = 'xxx' and col
 
 -- 修改自增id  
 alter table xxx  AUTO_INCREMENT = 500;  
+
+
+-- 截取第一个: 左边所有字符
+SUBSTRING_INDEX(templete, ':', 1)
+-- 截取第一个: 右边所有字符
+SUBSTRING_INDEX(templete, ':', -1)
 ```
