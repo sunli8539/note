@@ -10,7 +10,7 @@ spring.datasource.password2=xx
 ```
 
 ```text
-mapper接口和xml文件要平级
+不同DataSource加载的mapper接口和xml文件要平级
 ```
 
 ```java
