@@ -22,3 +22,14 @@ lambdaQuery.ne(Device::getStatus, DeviceEnum.StableStatus.DELETED.getCode());
 lambdaQuery.last("limit 1");
 Device device = this.getOne(lambdaQuery);
 ```
+
+```java
+# LocalDateTime 转 Date
+private LocalDateTime collectStartTime;
+private LocalDateTime collectEndTime;
+Date start = Date.from(monitor.getCollectStartTime().atZone(ZoneId.systemDefault()).toInstant());
+Date end = Date.from(monitor.getCollectEndTime().atZone(ZoneId.systemDefault()).toInstant());
+
+# 排序
+rsList.stream().sorted(Comparator.comparing(TestCaseResponseVO::getIp).reversed()).collect(Collectors.toList());
+```
