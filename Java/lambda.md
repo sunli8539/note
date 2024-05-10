@@ -13,10 +13,8 @@ List<String> distinctList=list.stream().distinct().collect(Collectors.toList());
 long count=list.stream().map(Student::getId).distinct().count();
 
 Map<String, List<Student>>teamMap=tagModelList.stream().collect(Collectors.groupingBy(Student::getTeam));
-Map<String, List<String>> tagMap = hostInfoDOList.stream()
-            .filter(importModel -> !CollectionUtils.isEmpty(importModel.getTags()))
-            .collect(Collectors.toMap(HostFastImportModel::getInnerIp, HostFastImportModel::getTags, (v1, v2) -> v1));
 
+# 有缺陷，并不能返回List<String>
 Map<String, List<String>> tagMap = hostInfoDOList.stream()
             .filter(importModel -> !CollectionUtils.isEmpty(importModel.getTags()))
             .collect(Collectors.toMap(HostFastImportModel::getInnerIp, HostFastImportModel::getTags, (v1, v2) -> v1 + v2));
