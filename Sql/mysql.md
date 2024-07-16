@@ -17,4 +17,22 @@ alter table xxx  AUTO_INCREMENT = 500;
 SUBSTRING_INDEX(str, ':', 1)
 -- 截取第一个: 右边所有字符
 SUBSTRING_INDEX(str, ':', -1)
+
+-- 结果聚合
+查询mysql，select time, num from table1;
+返回结果如下
+2024-07-01   1
+2024-07-02   1
+2024-07-03   2
+
+期望结果按时间汇总
+2024-07-01   1
+2024-07-02   2
+2024-07-03   4
+
+使用mysql窗口函数
+SELECT
+        time, SUM(num) OVER (ORDER BY time ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS num
+from table1
+
 ```
