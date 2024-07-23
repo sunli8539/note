@@ -1,3 +1,8 @@
+```text
+jar包还原
+jar -cvfM0 XbenchServer.jar ./
+```
+
 ```java
 @Data
 @Accessors(chain = true)
