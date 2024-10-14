@@ -27,7 +27,6 @@ RU'  RURUR  U'R'U'  R2
 
 顶层角块    正确角块左上  顶面朝前 
 R2D2  R'U'R  D2  R'UR'
-![Uploading image.png…]()
 
 ```
 
